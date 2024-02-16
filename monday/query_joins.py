@@ -62,7 +62,7 @@ def get_item_query(board_id, column_id, value, limit=None, cursor=None):
     columns = [{"column_id": str(column_id), "column_values": [str(value)]}] if not cursor else None
 
     raw_params = locals().items()
-    items_page_params = gather_params(raw_params, excluded_params=["column_id", "value"])
+    items_page_params = gather_params(raw_params, excluded_params=["column_id", "value", "raw_params"])
 
     query = '''query
         {
@@ -359,7 +359,7 @@ def get_tags_query(tags):
 def get_board_items_query(board_id: Union[str, int], query_params: Optional[Mapping[str, Any]] = None,
                           limit: Optional[int] = None, cursor: Optional[str] = None) -> str:
     raw_params = locals().items()
-    items_page_params = gather_params(raw_params, excluded_params=["board_id"])
+    items_page_params = gather_params(raw_params, excluded_params=["board_id", "raw_params"])
     wrapped_params = f"({items_page_params})" if items_page_params else ""
 
     query = '''query{
@@ -527,7 +527,7 @@ def get_groups_by_board_query(board_ids):
 def get_items_by_group_query(board_id: Union[int, str], group_id: str,
                              limit: Optional[int] = None, cursor: Optional[str] = None):
     raw_params = locals().items()
-    items_page_params = gather_params(raw_params, excluded_params=["board_id", "group_id"])
+    items_page_params = gather_params(raw_params, excluded_params=["board_id", "group_id", "raw_params"])
     wrapped_params = f"({items_page_params})" if items_page_params else ""
 
     query = '''query
