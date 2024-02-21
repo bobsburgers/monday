@@ -3,7 +3,7 @@ from setuptools import setup
 
 from monday import __author__, __email__, __version__
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf8") as fh:
     long_description = fh.read()
 
 setup(name='monday',
