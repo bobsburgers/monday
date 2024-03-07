@@ -97,6 +97,10 @@ def get_item_by_id_query(ids):
             items (ids: %s) {
                 id,
                 name,
+                updates {
+                    id
+                    body
+                }
                 group {
                     id
                     title
