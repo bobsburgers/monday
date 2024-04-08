@@ -545,6 +545,12 @@ def get_items_by_group_query(board_id: Union[int, str], group_id: str,
                     items {
                         id
                         name
+                        column_values {
+                            id
+                            text
+                            type
+                            value
+                        }
                     }
                 }
             }
